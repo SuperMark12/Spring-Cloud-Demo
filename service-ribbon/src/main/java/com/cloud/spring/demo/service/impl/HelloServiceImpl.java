@@ -24,7 +24,7 @@ public class HelloServiceImpl implements HelloService {
     @HystrixCommand(fallbackMethod = "helloError")
     public String sayHello(String name) {
         String APP_NAME = "EUREKA-CLIENT-DEMO";
-        return restTemplate.getForObject("http://" + APP_NAME + "/test/client/hello?name=" + name, String.class);
+        return restTemplate.getForObject("http://" + APP_NAME + "/test/hello?name=" + name, String.class);
     }
 
     public String helloError(String name) {

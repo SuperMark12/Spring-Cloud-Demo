@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 )
 public interface HelloServiceClient {
 
-    String API_PREFIX = "/test/client";
+    String API_PREFIX = "/test";
 
     @GetMapping(API_PREFIX + "/hello")
     String sayHelloFromClientOne(@RequestParam(value = "name") String name);
