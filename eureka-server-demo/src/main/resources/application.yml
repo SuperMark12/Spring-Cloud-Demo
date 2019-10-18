@@ -1,4 +1,3 @@
-
 server:
   port: 8080
 
@@ -10,6 +9,7 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
 spring:
   application:
     name: eureka-server

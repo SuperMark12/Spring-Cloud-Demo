@@ -1,5 +1,6 @@
 package com.cloud.spring.demo.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,12 @@ public class hello {
     private String port;
 
     @GetMapping("/hello")
+    @HystrixCommand(fallbackMethod = "helloError")
     public String syaHello(@RequestParam(value = "name", defaultValue = "zhangsan") String name) {
         return "hello " + name + ", i am from port: " + port;
+    }
+
+    public String helloError(String name) {
+        return "hello, " + name + ", sorry, error !";
     }
 }
